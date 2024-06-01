@@ -7,6 +7,12 @@ from app.app_stack import AppStack
 
 
 app = cdk.App()
+
+env_localstack = cdk.Environment(
+    account='000000000000',  # Dummy account ID for LocalStack
+    region='us-east-1'       # Use the same region as LocalStack
+)
+
 AppStack(app, "AppStack",
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,
@@ -23,6 +29,7 @@ AppStack(app, "AppStack",
     #env=cdk.Environment(account='123456789012', region='us-east-1'),
 
     # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
+         env=env_localstack
     )
 
 app.synth()
