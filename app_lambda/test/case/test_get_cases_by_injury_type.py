@@ -1,7 +1,7 @@
 import json
 from unittest import TestCase
 from unittest.mock import Mock, patch
-from ...app.case.get_cases import handler, _get_cases_by_injury_type
+from app_lambda.app.case.get_cases import handler, _get_cases_by_injury_type
 
 class TestGetCasesByInjuryType(TestCase):
 
@@ -11,7 +11,7 @@ class TestGetCasesByInjuryType(TestCase):
         request_payload = {"body": {"injuryType": injury_type}}
         mock_get_cases_by_injury_type.return_value = _get_mock_data()
 
-        response = handler(json.dumps(request_payload), "")
+        response = handler(request_payload, "")
 
         assert response["statusCode"] == 200
         assert "body" in response

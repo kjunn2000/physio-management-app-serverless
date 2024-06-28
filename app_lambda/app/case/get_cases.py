@@ -5,7 +5,7 @@ from boto3.dynamodb.conditions import Key
 
 
 def handler(event, context):
-    injury_type = json.loads(event)['body']['injuryType']
+    injury_type = event['body']['injuryType']
 
     response = _get_cases_by_injury_type(injury_type)
 
